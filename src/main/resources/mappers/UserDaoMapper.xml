@@ -18,7 +18,7 @@
     <!-- 插入数据-->
     <update id="insertUser" parameterType="com.yq.mybaits.pojo.User">
         insert  into tb_user(userName,password,name,age,sex,birthday,created,updated)
-        VALUES (#{usenName},#{password},#{name},#{age},#{sex},#{birthday},now(),now());
+        VALUES (#{userName},#{password},#{name},#{age},#{sex},#{birthday},now(),now());
     </update>
 
     <!--更新操作-->
