@@ -1,4 +1,4 @@
-package com.yq.mybaits;
+package com.yq.mybaits.main;
 
 import java.io.InputStream;
 
@@ -26,10 +26,8 @@ public class MybaitsTest {
         try {
             // 操作CRUD，第一个参数：指定statement，规则：命名空间+“.”+statementId
             // 第二个参数：指定传入sql的参数：这里是用户id
-            User user = sqlSession.selectOne("MyMapper.selectUser", 1);
-            User user1 = sqlSession.selectOne("MyMapper.selectUser",2);
+            User user = sqlSession.selectOne("UserDao.queryUserById", 1);
             System.out.println(user);
-            System.out.println("TEST:"+user1);
         } finally {
             sqlSession.close();
         }
