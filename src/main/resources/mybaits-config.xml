@@ -10,6 +10,12 @@
         <property name="username" value="root"/>
         <property name="password" value=""/>
     </properties>
+    <settings>
+        <!--开启驼峰匹配-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--开启二级缓存,全局总开关，这里关闭，mapper中开启了也没用-->
+        <!--<setting name="cacheEnabled" value="false"/>-->
+    </settings>
     <!-- 环境，可以配置多个，default为指定采用的那个环境-->
     <environments default="test">
         <!-- id:唯一标识-->
@@ -29,5 +35,6 @@
         <mapper resource="mappers/MyMapper.xml"/>
         <mapper resource="mappers/UserDaoMapper.xml"/>
         <mapper resource="mappers/UserMapper.xml"/>
+        <mapper resource="mappers/OrderMapper.xml"/>
     </mappers>
 </configuration>

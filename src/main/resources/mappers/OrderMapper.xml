@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="com.yq.mybaits.dao.OrderMapper">
+    <select id="queryOrderUserByOrderNumber" resultType="com.yq.mybaits.pojo.OrderUser">
+        select * from tb_order o left join tb_user u on o.user_id = u.id where o.order_number = #{number}
+    </select>
+
+    <resultMap id="OrderUserResultMap" type="com.yq.mybaits.pojo.Order" autoMapping="true">
+        <!--指定主键 column 数据库中列名，property Java实体类的属性名
+            -->
+        <id column="id" property="id"/>
+        <!--association:完成子对象的映射-->
+        <!--property:子对象在父对象中的属性名-->
+        <!--collection:定义子对象集合映射-->
+        <!--javaType:子对象的java类型-->
+        <!--autoMapping:完成子对象的自动映射，若开启驼峰，则按驼峰匹配-->
+        <association property="user" javaType="com.yq.mybaits.pojo.User" autoMapping="true">
+            <id column="user_id" property="id"/>
+        </association>
+        <collection property="detailList" javaType="List" ofType="com.yq.mybaits.pojo.OrderDetail" autoMapping="true">
+            <id column="id" property="id"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryOrderWithUserByOrderNumber" resultMap="OrderUserResultMap">
+    select * from tb_order o left join tb_user u on o.user_id=u.id where o.order_number = #{number}
+    </select>
+
+    <!--一对多查询 -->
+    <select id="queryOrderWithUserAndDetailByOrderNumber" resultMap="OrderUserResultMap">
+   select * from tb_order o
+   left join tb_user u on o.user_id=u.id
+   left join tb_orderdetail od on o.id=od.order_id
+   where o.order_number = #{number}
+</select>
+</mapper>

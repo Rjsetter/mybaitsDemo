@@ -16,7 +16,7 @@ import java.util.List;
 public class UserMapperTest {
 
     public UserMapper userMapper;
-
+    public  SqlSession sqlSession;
     @Before
     public void setUp() throws Exception {
         // 指定配置文件
@@ -26,7 +26,7 @@ public class UserMapperTest {
         // 构建sqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         // 获取sqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        sqlSession = sqlSessionFactory.openSession(true);
 
         // 1. 映射文件的命名空间（namespace）必须是mapper接口的全路径
         // 2. 映射文件的statement的id必须和mapper接口的方法名保持一致
@@ -50,6 +50,8 @@ public class UserMapperTest {
 
     @Test
     public void testQueryUserById() {
+        System.out.println(this.userMapper.queryUserById(1));
+//        sqlSession.clearCache();
         System.out.println(this.userMapper.queryUserById(1));
     }
 
@@ -90,4 +92,38 @@ public class UserMapperTest {
     public void testDeleteUserById() {
         this.userMapper.deleteUserById(1);
     }
+
+    @Test
+    public void testqueryUserList() {
+        List<User> users = this.userMapper.queryUserList("yeqiang");
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+    @Test
+    public void queryUserListByNameOrAge() throws Exception {
+        List<User> users = this.userMapper.queryUserListByNameOrAge(null, null);
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void queryUserListByNameAndAge() throws Exception{
+        List<User> users = this.userMapper.queryUserListByNameAndAge("大神",null);
+        for(User user:users){
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void queryUserListByIds(){
+        List<User> users = this.userMapper.queryUserListByIds(new String[]{"1","2"});
+        for(User user:users){
+            System.out.println(user);
+        }
+    }
+
+
+
 }
