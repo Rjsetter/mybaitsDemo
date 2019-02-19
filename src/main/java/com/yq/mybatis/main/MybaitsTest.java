@@ -1,8 +1,8 @@
-package com.yq.mybaits.main;
+package com.yq.mybatis.main;
 
 import java.io.InputStream;
 
-import com.yq.mybaits.pojo.User;
+import com.yq.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

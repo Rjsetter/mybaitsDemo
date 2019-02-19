@@ -1,7 +1,7 @@
-package com.yq.mybaits.main;
+package com.yq.mybatis.main;
 
-import com.yq.mybaits.dao.UserMapper;
-import com.yq.mybaits.pojo.User;
+import com.yq.mybatis.dao.UserMapper;
+import com.yq.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

@@ -1,9 +1,8 @@
-package com.yq.mybaits.main;
+package com.yq.mybatis.main;
 
-import com.yq.mybaits.dao.OrderMapper;
-import com.yq.mybaits.dao.UserMapper;
-import com.yq.mybaits.pojo.Order;
-import com.yq.mybaits.pojo.OrderUser;
+import com.yq.mybatis.dao.OrderMapper;
+import com.yq.mybatis.pojo.Order;
+import com.yq.mybatis.pojo.OrderUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,8 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-
-import static org.junit.Assert.*;
 
 public class OrderMapperTest {
     public OrderMapper orderMapper;
@@ -54,5 +51,11 @@ public class OrderMapperTest {
         System.out.println(order.getUser());
         System.out.println(order.getDetailList());
     }
-
+    @Test
+    public void queryOrderWithUserAndDetailItemByOrderNumber() throws Exception {
+        Order order = orderMapper.queryOrderWithUserAndDetailItemByOrderNumber("201807010001");
+        System.out.println(order);
+        System.out.println(order.getUser());
+        System.out.println(order.getDetailList());
+    }
 }

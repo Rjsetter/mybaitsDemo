@@ -1,4 +1,4 @@
-package com.yq.mybaits.pojo;
+package com.yq.mybatis.pojo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

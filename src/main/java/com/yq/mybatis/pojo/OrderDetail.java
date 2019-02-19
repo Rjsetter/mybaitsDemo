@@ -1,6 +1,4 @@
-package com.yq.mybaits.pojo;
-
-import java.text.SimpleDateFormat;
+package com.yq.mybatis.pojo;
 
 /**
  *
@@ -10,6 +8,15 @@ public class OrderDetail {
     private Integer orderId;
     private Double totalPrice;
     private Integer status;
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     public Integer getId() {
         return id;
@@ -51,6 +58,7 @@ public class OrderDetail {
                 ", orderId='" +orderId + '\'' +
                 ", totalPrice='" + totalPrice + '\'' +
                 ", status='" + status + '\'' +
+                ", itemName='" + getItem().getItemName() + '\'' +
                 '}';
     }
 }

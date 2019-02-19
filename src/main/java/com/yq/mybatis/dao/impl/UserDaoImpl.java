@@ -1,7 +1,7 @@
-package com.yq.mybaits.dao.impl;
+package com.yq.mybatis.dao.impl;
 
-import com.yq.mybaits.dao.UserDao;
-import com.yq.mybaits.pojo.User;
+import com.yq.mybatis.dao.UserDao;
+import com.yq.mybatis.pojo.User;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;

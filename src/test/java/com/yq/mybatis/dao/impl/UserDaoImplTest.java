@@ -1,7 +1,7 @@
-package com.yq.mybaits.dao.impl;
+package com.yq.mybatis.dao.impl;
 
-import com.yq.mybaits.dao.UserDao;
-import com.yq.mybaits.pojo.User;
+import com.yq.mybatis.dao.UserDao;
+import com.yq.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,8 +12,6 @@ import org.junit.Test;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class UserDaoImplTest {
 

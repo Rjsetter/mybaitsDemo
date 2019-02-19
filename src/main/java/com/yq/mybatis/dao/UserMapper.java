@@ -1,6 +1,6 @@
-package com.yq.mybaits.dao;
+package com.yq.mybatis.dao;
 
-import com.yq.mybaits.pojo.User;
+import com.yq.mybatis.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

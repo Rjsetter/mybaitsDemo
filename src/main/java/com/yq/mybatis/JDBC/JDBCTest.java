@@ -1,4 +1,4 @@
-package com.yq.mybaits.JDBC;
+package com.yq.mybatis.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

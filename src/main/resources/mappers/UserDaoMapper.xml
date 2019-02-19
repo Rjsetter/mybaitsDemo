@@ -7,22 +7,22 @@
     <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
        resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表
      -->
-    <select id="queryUserById" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserById" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user where id=#{id};
     </select>
     
-    <select id="queryUserAll" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserAll" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user;
     </select>
     
     <!-- 插入数据-->
-    <update id="insertUser" parameterType="com.yq.mybaits.pojo.User">
+    <update id="insertUser" parameterType="com.yq.mybatis.pojo.User">
         insert  into tb_user(userName,password,name,age,sex,birthday,created,updated)
         VALUES (#{userName},#{password},#{name},#{age},#{sex},#{birthday},now(),now());
     </update>
 
     <!--更新操作-->
-    <update id="updateUser" parameterType="com.yq.mybaits.pojo.User">
+    <update id="updateUser" parameterType="com.yq.mybatis.pojo.User">
         UPDATE tb_user
         <trim prefix="set" suffixOverrides=",">
             <if test="userName!=null">userName = #{userName},</if>

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
-<mapper namespace="com.yq.mybaits.dao.UserMapper">
+<mapper namespace="com.yq.mybatis.dao.UserMapper">
     <!--
         1.#{},预编译的方式preparestatement,使用占位符替换，防止sql注入一个参数的时候，任意的参数名可以接受
         2.${},普通的Statement,字符直接拼接，不可以防止生气了注入，一个参数的时候，必须使用${value}接收参数
@@ -12,7 +12,7 @@
         select * from ${tableName}
     </select>
 
-    <select id="login" resultType="com.yq.mybaits.pojo.User">
+    <select id="login" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user where userName = #{userName} and password =#{password}
     </select>
 
@@ -21,10 +21,10 @@
       resultType：sql语句查询结果集的封装类型，使用动态代理之后和方法的返回类型一致；resultMap：二选一
       parameterType：参数的类型，使用动态代理之后和方法的参数类型一致
     -->
-    <select id="queryUserById" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserById" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user where id = #{id}
     </select>
-    <select id="queryUserAll" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserAll" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user
     </select>
     <!-- 新增的Statement
@@ -35,7 +35,7 @@
        keyProperty：主键对应的pojo属性名
      -->
     <insert id="insertUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id"
-            parameterType="com.yq.mybaits.pojo.User">
+            parameterType="com.yq.mybatis.pojo.User">
         insert into tb_user(id,userName,password,name,age,sex,birthday,created,updated)
         values (null,#{userName},#{password},#{name},#{age},#{sex},#{birthday},now(),now())
     </insert>
@@ -44,7 +44,7 @@
       id：唯一标识，随便写，在同一个命名空间下保持唯一，使用动态代理之后要求和方法名保持一致
       parameterType：参数的类型，使用动态代理之后和方法的参数类型一致
     -->
-    <update id="updateUser" parameterType="com.yq.mybaits.pojo.User">
+    <update id="updateUser" parameterType="com.yq.mybatis.pojo.User">
         UPDATE tb_user
         <trim prefix="set" suffixOverrides=",">
             <if test="userName!=null">userName = #{userName},</if>
@@ -69,19 +69,19 @@
     </delete>
 
 
-    <resultMap id="resultUser" type="com.yq.mybaits.pojo.User" autoMapping="true">
+    <resultMap id="resultUser" type="com.yq.mybatis.pojo.User" autoMapping="true">
         <id column="id" property="id"/>
         <result column="userName" property="userName"/>
     </resultMap>
 
-    <select id="queryUserList" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserList" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user WHERE sex=1
         <if test="name!=null and name.trim()!=''">
             and name like '%${name}%'
         </if>
     </select>
 
-    <select id="queryUserListByNameOrAge" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserListByNameOrAge" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user WHERE sex=1
         <!--
         1.一旦有条件成立的when，后续的when则不会执行
@@ -100,7 +100,7 @@
         </choose>
     </select>
     
-    <select id="queryUserListByNameAndAge" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserListByNameAndAge" resultType="com.yq.mybatis.pojo.User">
         select * from tb_user
         <!--如果多出一个and，会自动去除，如果缺少and或者多出多个and则会报错-->
         <where>
@@ -113,7 +113,7 @@
         </where>
     </select>
     
-    <select id="queryUserListByIds" resultType="com.yq.mybaits.pojo.User">
+    <select id="queryUserListByIds" resultType="com.yq.mybatis.pojo.User">
         select  * from tb_user where id in 
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
             #{id}
