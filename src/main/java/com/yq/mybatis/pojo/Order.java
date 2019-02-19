@@ -1,5 +1,6 @@
 package com.yq.mybatis.pojo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  */
 public class Order {
     private Integer id;
-    private Long userId;
+    private Integer userId;
     private String orderNumber;
     private Date created;
     private Date updated;
@@ -40,11 +41,11 @@ public class Order {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -71,6 +72,15 @@ public class Order {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
-
+    //重写toString方法，数据展示好看一些。
+    @Override
+    public String toString(){
+        return "User{" +
+                "id='" + id + '\'' +
+                "userId='" + userId + '\'' +
+                ", created='" + created + '\'' +
+                ", updated='" + updated + '\'' +
+                '}';
+    }
 
 }

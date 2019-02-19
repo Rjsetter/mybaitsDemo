@@ -15,6 +15,13 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!--开启二级缓存,全局总开关，这里关闭，mapper中开启了也没用-->
         <!--<setting name="cacheEnabled" value="false"/>-->
+
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--
+            默认为true，默认加载所有属性；为false时，当get某属性时完成加载
+        -->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
     <!-- 环境，可以配置多个，default为指定采用的那个环境-->
     <environments default="test">

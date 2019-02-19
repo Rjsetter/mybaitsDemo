@@ -33,4 +33,11 @@ public interface OrderMapper {
      * @return
      */
     Order queryOrderWithUserAndDetailItemByOrderNumber(@Param("number") String number);
+
+    /**
+     * 延迟加载
+     * @param number
+     * @return
+     */
+    Order queryOrderWithUserAndDetailItemByOrderNumberLazy(@Param("number") String number);
 }

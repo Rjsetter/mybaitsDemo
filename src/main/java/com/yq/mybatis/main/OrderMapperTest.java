@@ -58,4 +58,15 @@ public class OrderMapperTest {
         System.out.println(order.getUser());
         System.out.println(order.getDetailList());
     }
+
+    @Test
+    public void queryOrderWithUserAndDetailItemByOrderNumberLazy() {
+        Order order = orderMapper.queryOrderWithUserAndDetailItemByOrderNumberLazy("201807010001") ;
+        System.out.println(order);
+        System.out.println(order.getUserId());
+        System.out.println(order.getOrderNumber());
+        System.out.println(order.getCreated());
+        System.out.println("==================================");
+        System.out.println(order.getUser());
+    }
 }

@@ -57,4 +57,20 @@
         left join tb_item i on od.item_id=i.id
         where o.order_number = #{number}
     </select>
+
+    <!--延迟加载-->
+    <resultMap id="LazyOrderUserResultMap" type="com.yq.mybatis.pojo.Order" autoMapping="true">
+        <id column="id" property="id"/>
+
+        <!--select：子查询的statement的id，column：子查询所需要的条件-->
+        <association property="user" javaType="com.yq.mybatis.pojo.User" autoMapping="true" select="queryUserById" column="user_id"/>
+    </resultMap>
+    
+    <select id="queryOrderWithUserAndDetailItemByOrderNumberLazy" resultMap="LazyOrderUserResultMap">
+        select * from tb_order where order_number = #{number}
+    </select>
+
+    <select id="queryUserById" resultType="com.yq.mybatis.pojo.User">
+        select * from tb_user where id=#{id}
+</select>
 </mapper>
